@@ -1,4 +1,4 @@
-mport { findIntersection } from './find-intersection';
+import { findIntersection } from './find-intersection';
 describe('find intersection', () => {
   test('no array element', () => {
     expect(findIntersection([])).toEqual([]);
