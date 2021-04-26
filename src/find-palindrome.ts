@@ -13,7 +13,7 @@ export const findpalindrome = (num: number): boolean => {
    {
      reminder = numtotest % 10;
      reversenum = reversenum * 10 + reminder;
-     numtotest = numtotest/10;
+     numtotest = Math.floor(numtotest/10);
    } }
    
    if (num == reversenum)
