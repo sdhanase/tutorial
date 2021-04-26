@@ -1,41 +1,13 @@
-export const findIntersection = (arrset: Array<String>): Array<number> => {
+export const findIntersection = (arrset: Array<string>): Array<number> => {
+  const numArr = arrset.map(i => i.split(',').map(j => parseInt(j)));
 
-  var arrnum = arrset.length;
-
-  if (arrnum == 0) {
+  if (numArr.length == 0) {
     return [];
   }
-  else if (arrnum == 1) {
+  
+  const [firstItem, ...rest] = numArr;
 
-    const singleStringArray = arrset[0].split(',').map(x => x.trim());
-    return singleStringArray.map(Number);
-  }
-  else if (arrnum == 2) {
-    const firstString = arrset[0];
-    const secondString = arrset[1];
-
-
-    const firstStringArray = firstString.split(',').map(x => x.trim());
-    const secondStringArray = secondString.split(',').map(x => x.trim());
-
-    let intersectionArray = firstStringArray.filter(x => secondStringArray.includes(x));
-
-    return intersectionArray.map(Number);
-  }
-  else {
-    const firstString = arrset[0];
-    const secondString = arrset[1];
-    const thirdString = arrset[2];
-
-    const firstStringArray = firstString.split(',').map(x => x.trim());
-    const secondStringArray = secondString.split(',').map(x => x.trim());
-    const thirdStringArray = thirdString.split(',').map(x => x.trim());
-
-    let intersectionArray = firstStringArray.filter(x => secondStringArray.includes(x));
-
-    let finalInterSectionArray = intersectionArray.filter(x => thirdStringArray.includes(x));
-
-    return finalInterSectionArray.map(Number);
-  }
-
+  return rest.reduce((result, item) => {
+    return result.filter(i => item.includes(i));
+  }, firstItem);
 };

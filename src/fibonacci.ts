@@ -1,16 +1,12 @@
-export const fibonacci = (num: number): Array<number> => {
-
-  var a = [], i;
-
-  if (num == 1) {
-    throw 'Invalid input! Constraint: n > 1.';
+export const fibonacci = (inputNum: number): Array<number> => {
+  let result = [0, 1];
+  if (inputNum > 1) {
+    for (let i = 2; i <= inputNum; i++) {
+      result.push(result[i - 2] + result[i - 1]);
+    }
+    return result;
   }
   else {
-    a[0] = 0;
-    a[1] = 1;
-    for (i = 2; i < num + 1; i++) {
-      a[i] = a[i - 2] + a[i - 1];
-    }
-    return a;
+    throw 'Invalid input! Constraint: n > 1.';
   }
 };
